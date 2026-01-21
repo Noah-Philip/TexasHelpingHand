@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources | Texas Helping Hand</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <nav class="navbar" aria-label="Primary">
+      <a class="logo" href="index.html" aria-label="Texas Helping Hand home">
+        <span class="logo-mark" aria-hidden="true">TH</span>
+        Texas Helping Hand
+      </a>
+      <div class="nav-actions">
+        <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          Menu
+        </button>
+        <div class="nav-links" data-nav>
+          <a href="about.html">About Us</a>
+          <a href="nonprofits.html">Nonprofits</a>
+          <a href="index.html#help">Help</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero" aria-labelledby="resources-title">
+      <h1 id="resources-title">Resources</h1>
+      <p>Guides, templates, and tools to support nonprofit collaboration.</p>
+    </section>
+    <section class="page-content" aria-label="Resources content">
+      <h2>For Students</h2>
+      <p>
+        Access onboarding guides, volunteer expectations, and impact tracking tools. These
+        resources help students deliver consistent, professional service experiences.
+      </p>
+      <h2>For Nonprofit Partners</h2>
+      <p>
+        Discover collaboration timelines, communication checklists, and partnership toolkits
+        designed to streamline engagement with UT volunteers.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <strong>Texas Helping Hand</strong>
+        <p>We are a registered UT student organization and are not affiliated with The University of Texas at Austin.</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="resources.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('[data-nav]');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+</body>
+</html>

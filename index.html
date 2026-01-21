@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texas Helping Hand | UT Student Support for Nonprofits</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <nav class="navbar" aria-label="Primary">
+      <a class="logo" href="index.html" aria-label="Texas Helping Hand home">
+        <span class="logo-mark" aria-hidden="true">TH</span>
+        Texas Helping Hand
+      </a>
+      <div class="nav-actions">
+        <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          Menu
+        </button>
+        <div class="nav-links" data-nav>
+          <a href="about.html">About Us</a>
+          <a href="nonprofits.html">Nonprofits</a>
+          <a href="index.html#help">Help</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">Empowering Nonprofits Through UT Student Support</h1>
+        <p>
+          Texas Helping Hand connects passionate UT students with nonprofit partners
+          across Texas, providing skilled volunteers, innovative ideas, and consistent
+          support to expand community impact.
+        </p>
+        <div class="cta-group" aria-label="Hero actions">
+          <a class="cta-button" href="nonprofits.html">See How We Help</a>
+          <a class="cta-button secondary" href="contact.html">Get Involved</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission" aria-labelledby="mission-title">
+      <div class="mission-content">
+        <h2 id="mission-title">Our Mission</h2>
+        <p>
+          We mobilize UT students to deliver sustainable, hands-on assistance for nonprofits
+          that uplift Texas communities. By pairing student talent with nonprofit needs, we
+          create measurable outcomes, strengthen local partnerships, and inspire lifelong
+          civic leadership.
+        </p>
+        <blockquote>
+          “When students and nonprofits collaborate, we turn campus energy into community change.”
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="help-section" id="help" aria-labelledby="help-title">
+      <h2 id="help-title">How to Help</h2>
+      <div class="help-item">
+        <div class="help-icon" aria-hidden="true">🤝</div>
+        <div class="help-text">
+          <h3>Volunteer</h3>
+          <p>
+            Join project teams that offer strategic planning, event support, tutoring, and
+            operational assistance. Flexible schedules make it easy for students to contribute
+            their skills.
+          </p>
+        </div>
+      </div>
+      <div class="help-item">
+        <div class="help-icon" aria-hidden="true">💚</div>
+        <div class="help-text">
+          <h3>Donate</h3>
+          <p>
+            Invest in nonprofit capacity with targeted giving drives and supply donations.
+            Every contribution helps nonprofits serve more neighbors with dignity.
+          </p>
+        </div>
+      </div>
+      <div class="help-item">
+        <div class="help-icon" aria-hidden="true">📣</div>
+        <div class="help-text">
+          <h3>Partner</h3>
+          <p>
+            Nonprofits can collaborate with our student leaders to design custom engagements,
+            research support, and outreach campaigns tailored to mission-critical goals.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <strong>Texas Helping Hand</strong>
+        <p>We are a registered UT student organization and are not affiliated with The University of Texas at Austin.</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="resources.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('[data-nav]');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+</body>
+</html>

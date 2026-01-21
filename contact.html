@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Texas Helping Hand</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <nav class="navbar" aria-label="Primary">
+      <a class="logo" href="index.html" aria-label="Texas Helping Hand home">
+        <span class="logo-mark" aria-hidden="true">TH</span>
+        Texas Helping Hand
+      </a>
+      <div class="nav-actions">
+        <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          Menu
+        </button>
+        <div class="nav-links" data-nav>
+          <a href="about.html">About Us</a>
+          <a href="nonprofits.html">Nonprofits</a>
+          <a href="index.html#help">Help</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero" aria-labelledby="contact-title">
+      <h1 id="contact-title">Contact</h1>
+      <p>Let us know how you would like to collaborate or get involved.</p>
+    </section>
+    <section class="page-content" aria-label="Contact content">
+      <h2>Connect With Us</h2>
+      <p>
+        Send inquiries to <strong>hello@texashelpinghand.org</strong> or follow us on social
+        media for volunteer updates, nonprofit stories, and upcoming events.
+      </p>
+      <h2>Visit UT Campus</h2>
+      <p>
+        Our student leaders host weekly office hours in the Student Activities Center.
+        Check back soon for our semester schedule.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <strong>Texas Helping Hand</strong>
+        <p>We are a registered UT student organization and are not affiliated with The University of Texas at Austin.</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="resources.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('[data-nav]');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+</body>
+</html>
