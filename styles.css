@@ -120,7 +120,7 @@ header {
 }
 
 .hero {
-  min-height: 75vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   background: linear-gradient(rgba(55, 92, 77, 0.55), rgba(55, 92, 77, 0.55)),
@@ -176,6 +176,7 @@ header {
   position: relative;
   background: linear-gradient(rgba(55, 92, 77, 0.7), rgba(55, 92, 77, 0.7)),
     url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  min-height: 100vh;
   padding: 4rem 4vw;
   color: var(--white);
 }
@@ -207,6 +208,7 @@ header {
 .help-section {
   background: linear-gradient(rgba(15, 61, 46, 0.75), rgba(15, 61, 46, 0.75)),
     url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  min-height: 100vh;
   padding: 4rem 0;
   color: var(--white);
 }
@@ -332,7 +334,7 @@ footer {
   }
 
   .hero {
-    min-height: 70vh;
+    min-height: 100vh;
   }
 }
 
