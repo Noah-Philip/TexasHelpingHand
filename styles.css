@@ -173,8 +173,11 @@ header {
 }
 
 .mission {
-  background: var(--accent-light-green);
+  position: relative;
+  background: linear-gradient(rgba(55, 92, 77, 0.7), rgba(55, 92, 77, 0.7)),
+    url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
   padding: 4rem 4vw;
+  color: var(--white);
 }
 
 .mission-content {
@@ -183,7 +186,7 @@ header {
 
 .mission h2 {
   font-family: 'IBM Plex Sans', sans-serif;
-  color: var(--primary-green);
+  color: var(--white);
   margin-bottom: 1rem;
   font-size: clamp(1.8rem, 3vw, 2.4rem);
 }
@@ -196,19 +199,21 @@ header {
   margin: 2rem 0 0;
   font-family: 'IBM Plex Serif', serif;
   font-style: italic;
-  color: var(--primary-green);
-  border-left: 4px solid var(--primary-green);
+  color: var(--white);
+  border-left: 4px solid var(--white);
   padding-left: 1.5rem;
 }
 
 .help-section {
-  background: var(--neutral-bg);
+  background: linear-gradient(rgba(15, 61, 46, 0.75), rgba(15, 61, 46, 0.75)),
+    url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
   padding: 4rem 0;
+  color: var(--white);
 }
 
 .help-section h2 {
   font-family: 'IBM Plex Sans', sans-serif;
-  color: var(--primary-green);
+  color: var(--white);
   padding: 0 4vw;
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   margin-bottom: 2rem;
@@ -220,18 +225,20 @@ header {
   gap: 2rem;
   align-items: center;
   padding: 3rem 4vw;
-  border-top: 1px solid rgba(55, 92, 77, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(2px);
 }
 
 .help-item:last-of-type {
-  border-bottom: 1px solid rgba(55, 92, 77, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .help-icon {
   width: 64px;
   height: 64px;
   border-radius: 16px;
-  background: var(--accent-light-green);
+  background: rgba(255, 255, 255, 0.9);
   display: grid;
   place-items: center;
   color: var(--primary-green);
@@ -246,7 +253,7 @@ header {
 .help-text h3 {
   font-family: 'IBM Plex Sans', sans-serif;
   margin: 0 0 0.5rem;
-  color: var(--primary-green);
+  color: var(--white);
 }
 
 .help-text p {
