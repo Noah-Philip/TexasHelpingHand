@@ -20,8 +20,9 @@
         </button>
         <div class="nav-links" data-nav>
           <a href="about.html">About Us</a>
-          <a href="nonprofits.html">Nonprofits</a>
+          <a href="nonprofits.html">Partners</a>
           <a href="contact.html">Contact</a>
+          <a class="nav-donate" href="index.html#donate">Donate</a>
         </div>
       </div>
     </nav>
@@ -63,10 +64,15 @@
   <script>
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('[data-nav]');
+    const header = document.querySelector('header');
 
     hamburger.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 12);
     });
   </script>
 </body>
