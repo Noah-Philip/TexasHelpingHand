@@ -21,7 +21,10 @@
         <div class="nav-links" data-nav>
           <a href="about.html">About Us</a>
           <a href="nonprofits.html">Nonprofits</a>
+          <a href="#partners">Partners</a>
+          <a href="#member-login">Member Login</a>
           <a href="index.html#help">Help</a>
+          <a href="#donate">Donate</a>
           <a href="resources.html">Resources</a>
           <a href="contact.html">Contact</a>
         </div>
@@ -32,11 +35,12 @@
   <main id="main-content">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
-        <h1 id="hero-title">Empowering Nonprofits Through UT Student Support</h1>
+        <h1 id="hero-title">Dedicated to mitigating homelessness</h1>
         <p>
-          Texas Helping Hand connects passionate UT students with nonprofit partners
-          across Texas, providing skilled volunteers, innovative ideas, and consistent
-          support to expand community impact.
+          Texas Helping Hand unites UT students, community partners, and local leaders to deliver
+          practical support for neighbors experiencing housing instability. Through direct service,
+          coordinated outreach, and long-term collaboration, we help build pathways to safety,
+          dignity, and lasting stability.
         </p>
         <div class="cta-group" aria-label="Hero actions">
           <a class="cta-button" href="nonprofits.html">See How We Help</a>
@@ -91,6 +95,100 @@
             Nonprofits can collaborate with our student leaders to design custom engagements,
             research support, and outreach campaigns tailored to mission-critical goals.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners" id="partners" aria-labelledby="partners-title">
+      <h2 id="partners-title">Partners / Nonprofits We Work With</h2>
+      <ul class="partner-list">
+        <li>Central Texas Food Bank</li>
+        <li>Texas Homeless Network</li>
+        <li>UT Outpost</li>
+        <li>Mission Accomplished</li>
+        <li>Keep Austin Fed</li>
+        <li>Sunrise Navigation Center</li>
+        <li>The Other Ones Foundation</li>
+        <li>Restless Legs Syndrome Foundation</li>
+        <li>Interfaith Action of Central Texas</li>
+      </ul>
+    </section>
+
+    <section class="member-login" id="member-login" aria-labelledby="member-login-title">
+      <div class="section-shell">
+        <h2 id="member-login-title">Member Login</h2>
+        <p>Current members and volunteers can access schedules, project updates, and service opportunities.</p>
+        <form class="login-form" aria-label="Member login form">
+          <label for="member-email">Email</label>
+          <input id="member-email" type="email" name="email" autocomplete="email" placeholder="name@example.com" required>
+
+          <label for="member-password">Password</label>
+          <input id="member-password" type="password" name="password" autocomplete="current-password" placeholder="Enter your password" required>
+
+          <label for="member-role">Login Type</label>
+          <select id="member-role" name="role">
+            <option value="member">Executive/Member Login</option>
+            <option value="volunteer">Volunteer Login</option>
+          </select>
+
+          <button type="submit" class="cta-button">Log In</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="calendar" aria-labelledby="calendar-title">
+      <div class="section-shell">
+        <h2 id="calendar-title">Upcoming Events Calendar</h2>
+        <p>Stay up to date with volunteering opportunities, outreach events, and training sessions.</p>
+        <iframe
+          title="Texas Helping Hand Calendar"
+          src="https://calendar.google.com/calendar/embed?src=uthelpinghand%40gmail.com&ctz=America%2FChicago"
+          class="calendar-frame"
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+
+    <section class="about-us" aria-labelledby="about-us-title">
+      <div class="section-shell">
+        <h2 id="about-us-title">About Us</h2>
+        <p>
+          Texas Helping Hand is a student-led initiative rooted at The University of Texas at Austin.
+          We design service programs that connect students with nonprofit partners focused on homelessness,
+          food insecurity, and navigation services. Our teams coordinate volunteer placement, donation drives,
+          and educational events throughout the academic year.
+        </p>
+        <h3>Executive Members</h3>
+        <ul class="executive-list">
+          <li><strong>President:</strong> Leads strategy, nonprofit partnerships, and campus collaboration.</li>
+          <li><strong>Vice President:</strong> Oversees volunteer operations and service planning.</li>
+          <li><strong>Director of Outreach:</strong> Manages community engagement and member recruitment.</li>
+          <li><strong>Director of Partnerships:</strong> Coordinates communication with nonprofit partners.</li>
+          <li><strong>Treasurer:</strong> Supervises fundraising efforts and financial stewardship.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="donate" id="donate" aria-labelledby="donate-title">
+      <div class="section-shell">
+        <h2 id="donate-title">Donate</h2>
+        <p>Your support funds emergency supplies, service-day transportation, and nonprofit resource drives.</p>
+        <div class="qr-grid">
+          <article class="qr-card">
+            <h3>Zelle</h3>
+            <img src="https://quickchart.io/qr?text=Zelle%20to%20uthelpinghand%40gmail.com&size=220" alt="Zelle donation QR code for Texas Helping Hand">
+            <p>Send through your banking app to <strong>uthelpinghand@gmail.com</strong>.</p>
+          </article>
+          <article class="qr-card">
+            <h3>Venmo</h3>
+            <img src="https://quickchart.io/qr?text=Venmo%20%40TexasHelpingHand&size=220" alt="Venmo donation QR code for Texas Helping Hand">
+            <p>Contribute directly via Venmo at <strong>@TexasHelpingHand</strong>.</p>
+          </article>
+          <article class="qr-card">
+            <h3>Cash App</h3>
+            <img src="https://quickchart.io/qr?text=Cash%20App%20%24TexasHelpingHand&size=220" alt="Cash App donation QR code for Texas Helping Hand">
+            <p>Support us on Cash App at <strong>$TexasHelpingHand</strong>.</p>
+          </article>
         </div>
       </div>
     </section>
