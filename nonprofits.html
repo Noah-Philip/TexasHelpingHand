@@ -20,8 +20,9 @@
         </button>
         <div class="nav-links" data-nav>
           <a href="about.html">About Us</a>
-          <a href="nonprofits.html">Nonprofits</a>
+          <a href="nonprofits.html">Partners</a>
           <a href="contact.html">Contact</a>
+          <a class="nav-donate" href="index.html#donate">Donate</a>
         </div>
       </div>
     </nav>
@@ -29,55 +30,57 @@
 
   <main id="main-content">
     <section class="page-hero" aria-labelledby="nonprofit-title">
-      <h1 id="nonprofit-title">Nonprofits We Support</h1>
+      <h1 id="nonprofit-title">Community Partners</h1>
+      <p>Working across Austin with organizations serving food access, housing stability, and social support.</p>
     </section>
     <section class="page-content partner-spotlight" aria-labelledby="partners-title">
-      <h2 id="partners-title">Partners / Nonprofits We Work With</h2>
+      <h2 id="partners-title">Organizations We Support</h2>
+      <p class="section-intro">Our student teams contribute volunteer hours, outreach support, and project planning with each partner.</p>
       <div class="partner-cards">
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">🍎</div>
           <h3>Central Texas Food Bank</h3>
-          <p>Distributes fresh food and pantry staples to families facing hunger across Central Texas.</p>
+          <p>Food distribution and hunger relief support.</p>
         </article>
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">🏠</div>
           <h3>Texas Homeless Network</h3>
-          <p>Builds statewide coordination and advocacy to improve housing access and homeless services.</p>
+          <p>Housing advocacy and coordinated services.</p>
         </article>
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">🎓</div>
           <h3>UT Outpost</h3>
-          <p>Supports UT students with free food, professional clothing, and emergency resources.</p>
+          <p>Campus resources for food and essentials.</p>
         </article>
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">✅</div>
           <h3>Mission Accomplished</h3>
-          <p>Connects neighbors with wraparound support programs that strengthen long-term stability.</p>
+          <p>Wraparound programs for long-term stability.</p>
         </article>
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">🥗</div>
           <h3>Keep Austin Fed</h3>
-          <p>Rescues surplus meals and redistributes them quickly to shelters and partner agencies.</p>
+          <p>Meal rescue and redistribution.</p>
         </article>
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">🌅</div>
           <h3>Sunrise Navigation Center</h3>
-          <p>Provides personalized pathways to housing, employment, and health services.</p>
+          <p>Pathways to housing and employment.</p>
         </article>
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">🧭</div>
           <h3>The Other Ones Foundation</h3>
-          <p>Creates dignified work opportunities and shelter access for people exiting homelessness.</p>
+          <p>Dignified work and shelter access.</p>
         </article>
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">🩺</div>
           <h3>Restless Legs Syndrome Foundation</h3>
-          <p>Advances education and support that improve health outcomes and quality of life.</p>
+          <p>Health education and community support.</p>
         </article>
         <article class="partner-card">
           <div class="partner-icon" aria-hidden="true">🤲</div>
           <h3>Interfaith Action of Central Texas</h3>
-          <p>Unites diverse faith communities to deliver housing, refugee, and social service support.</p>
+          <p>Refugee, housing, and social service programs.</p>
         </article>
       </div>
     </section>
@@ -100,10 +103,15 @@
   <script>
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('[data-nav]');
+    const header = document.querySelector('header');
 
     hamburger.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 12);
     });
   </script>
 </body>
