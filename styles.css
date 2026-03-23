@@ -7,6 +7,10 @@
   --white: #ffffff;
   --shadow: 0 28px 70px rgba(9, 19, 13, 0.16);
   --border: rgba(26, 53, 39, 0.1);
+  --header-height: 52px;
+  --header-top-offset: 20px;
+  --interior-hero-top-space: calc(var(--header-height) + var(--header-top-offset) + 44px);
+  --interior-hero-top-space-mobile: calc(var(--header-height) + 52px);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,18 +40,18 @@ img { max-width: 100%; display: block; }
 
 .site-header {
   position: fixed;
-  top: 20px;
+  top: var(--header-top-offset);
   left: 50%;
   transform: translateX(-50%);
   width: min(1100px, calc(100vw - 48px));
   z-index: 300;
 }
-.interior-header { position: sticky; top: 20px; }
+.interior-header { position: sticky; top: var(--header-top-offset); }
 
 .topnav {
   border-radius: 22px;
   overflow: hidden;
-  height: 52px;
+  height: var(--header-height);
   background: rgba(26, 53, 39, 0.76);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -103,7 +107,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-bar {
-  min-height: 52px;
+  min-height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -650,7 +654,7 @@ img { max-width: 100%; display: block; }
 
 .interior-hero {
   min-height: 66vh;
-  padding: 180px 80px 90px;
+  padding: var(--interior-hero-top-space) 80px 90px;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 2rem;
@@ -859,9 +863,11 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 900px) {
+  :root {
+    --header-top-offset: 12px;
+  }
   .site-header,
   .interior-header {
-    top: 12px;
     width: calc(100vw - 24px);
   }
   .topnav,
@@ -901,6 +907,10 @@ img { max-width: 100%; display: block; }
   .section,
   .footer { padding-left: 24px; padding-right: 24px; }
   .hero { padding-top: 140px; }
+  .interior-hero {
+    padding-top: var(--interior-hero-top-space-mobile);
+    padding-bottom: 72px;
+  }
   .about-stats { grid-template-columns: 1fr; }
   .footer { flex-direction: column; align-items: flex-start; }
 }
