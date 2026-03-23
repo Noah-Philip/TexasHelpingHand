@@ -280,87 +280,130 @@
       let quoteTimer;
       let typingTimer;
 
-      const buildLine = (segments) => {
+      const buildLine = () => {
         const line = document.createElement('span');
         line.className = 'hero-quote-line';
-        return { line, segments };
+        return line;
       };
 
-      const createCharacterNodes = (segments, lineElement) => {
-        const nodes = [];
-
-        segments.forEach((segment) => {
+      const quoteCharacters = heroQuotes.map((quote) => [quote.firstLine, quote.secondLine].map((segments) =>
+        segments.flatMap((segment) => {
           if (typeof segment === 'string') {
-            segment.split('').forEach((character) => {
-              const charNode = document.createElement('span');
-              charNode.className = 'hero-quote-char';
-              charNode.textContent = character;
-              lineElement.appendChild(charNode);
-              nodes.push(charNode);
-            });
-            return;
+            return segment.split('').map((character) => ({ character, emphasis: false }));
           }
 
-          const emphasizedWord = document.createElement('em');
-          lineElement.appendChild(emphasizedWord);
+          return segment.text.split('').map((character) => ({ character, emphasis: true }));
+        })
+      ));
 
-          segment.text.split('').forEach((character) => {
-            const charNode = document.createElement('span');
-            charNode.className = 'hero-quote-char';
-            charNode.textContent = character;
-            emphasizedWord.appendChild(charNode);
-            nodes.push(charNode);
-          });
+      const appendCharacterRun = (lineElement, characters, options = {}) => {
+        const { visible = true, legacy = false } = options;
+        let activeContainer = lineElement;
+        let activeEmphasis = false;
+
+        characters.forEach(({ character, emphasis }) => {
+          if (emphasis !== activeEmphasis) {
+            if (emphasis) {
+              activeContainer = document.createElement('em');
+              lineElement.appendChild(activeContainer);
+            } else {
+              activeContainer = lineElement;
+            }
+            activeEmphasis = emphasis;
+          }
+
+          const charNode = document.createElement('span');
+          charNode.className = 'hero-quote-char';
+          if (visible) {
+            charNode.classList.add('is-visible');
+          }
+          if (legacy) {
+            charNode.classList.add('is-legacy');
+          }
+          charNode.textContent = character;
+          activeContainer.appendChild(charNode);
         });
-
-        return nodes;
       };
 
       const renderStaticQuote = (index) => {
-        const quote = heroQuotes[index];
         heroQuote.innerHTML = '';
+        heroQuote.classList.remove('is-typing');
 
-        [quote.firstLine, quote.secondLine].forEach((segments) => {
-          const { line } = buildLine(segments);
-          segments.forEach((segment) => {
-            if (typeof segment === 'string') {
-              line.append(document.createTextNode(segment));
-            } else {
-              const emphasizedWord = document.createElement('em');
-              emphasizedWord.textContent = segment.text;
-              line.appendChild(emphasizedWord);
-            }
-          });
+        quoteCharacters[index].forEach((lineCharacters) => {
+          const line = buildLine();
+          appendCharacterRun(line, lineCharacters);
           heroQuote.appendChild(line);
         });
       };
 
-      const renderTypewriterQuote = (index, onComplete) => {
-        const quote = heroQuotes[index];
+      const renderTransitionFrame = (fromIndex, toIndex, step, activeLineIndex) => {
+        const previousLines = fromIndex === null
+          ? [[], []]
+          : quoteCharacters[fromIndex];
+        const nextLines = quoteCharacters[toIndex];
+
         heroQuote.innerHTML = '';
         heroQuote.classList.add('is-typing');
 
-        const allCharacters = [quote.firstLine, quote.secondLine].flatMap((segments) => {
-          const { line } = buildLine(segments);
+        nextLines.forEach((nextLineCharacters, lineIndex) => {
+          const line = buildLine();
+          const previousLineCharacters = previousLines[lineIndex] || [];
+          const typedCount = Math.min(step[lineIndex], nextLineCharacters.length);
+          const removedCount = Math.min(step[lineIndex], previousLineCharacters.length);
+          const typedCharacters = nextLineCharacters.slice(0, typedCount);
+          const remainingCharacters = previousLineCharacters.slice(removedCount);
+          const isActiveLine = lineIndex === activeLineIndex;
+          const shouldShowCursor = isActiveLine && step[lineIndex] < Math.max(previousLineCharacters.length, nextLineCharacters.length);
+
+          appendCharacterRun(line, typedCharacters);
+
+          if (shouldShowCursor) {
+            const cursor = document.createElement('span');
+            cursor.className = 'hero-quote-cursor';
+            cursor.setAttribute('aria-hidden', 'true');
+            line.appendChild(cursor);
+          }
+
+          if (typedCharacters.length && remainingCharacters.length) {
+            const bridge = document.createElement('span');
+            bridge.className = 'hero-quote-bridge';
+            bridge.setAttribute('aria-hidden', 'true');
+            line.appendChild(bridge);
+          }
+
+          appendCharacterRun(line, remainingCharacters, { legacy: true });
           heroQuote.appendChild(line);
-          return createCharacterNodes(segments, line);
         });
+      };
 
-        let characterIndex = 0;
+      const renderTypewriterQuote = (fromIndex, toIndex, onComplete) => {
+        const previousLines = fromIndex === null
+          ? [[], []]
+          : quoteCharacters[fromIndex];
+        const nextLines = quoteCharacters[toIndex];
+        const lineSteps = nextLines.map((lineCharacters, lineIndex) => Math.max(lineCharacters.length, (previousLines[lineIndex] || []).length));
+        const step = [0, 0];
+        let activeLineIndex = 0;
 
-        const revealNextCharacter = () => {
-          if (characterIndex >= allCharacters.length) {
+        const advanceFrame = () => {
+          while (activeLineIndex < lineSteps.length && step[activeLineIndex] >= lineSteps[activeLineIndex]) {
+            activeLineIndex += 1;
+          }
+
+          if (activeLineIndex >= lineSteps.length) {
             heroQuote.classList.remove('is-typing');
+            renderStaticQuote(toIndex);
             onComplete();
             return;
           }
 
-          allCharacters[characterIndex].classList.add('is-visible');
-          characterIndex += 1;
-          typingTimer = window.setTimeout(revealNextCharacter, 42);
+          step[activeLineIndex] += 1;
+          renderTransitionFrame(fromIndex, toIndex, step, activeLineIndex);
+          typingTimer = window.setTimeout(advanceFrame, 48);
         };
 
-        revealNextCharacter();
+        renderTransitionFrame(fromIndex, toIndex, step, activeLineIndex);
+        advanceFrame();
       };
 
       const getNextQuoteIndex = () => {
@@ -380,23 +423,26 @@
 
       const rotateQuote = () => {
         const nextQuote = getNextQuoteIndex();
-        activeQuote = nextQuote;
 
         if (prefersReducedMotion) {
+          activeQuote = nextQuote;
           renderStaticQuote(activeQuote);
           queueNextQuote();
           return;
         }
 
         window.clearTimeout(typingTimer);
-        renderTypewriterQuote(activeQuote, queueNextQuote);
+        renderTypewriterQuote(activeQuote, nextQuote, () => {
+          activeQuote = nextQuote;
+          queueNextQuote();
+        });
       };
 
       if (prefersReducedMotion) {
         renderStaticQuote(activeQuote);
         queueNextQuote();
       } else {
-        renderTypewriterQuote(activeQuote, queueNextQuote);
+        renderTypewriterQuote(null, activeQuote, queueNextQuote);
       }
 
       window.addEventListener('beforeunload', () => {
