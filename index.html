@@ -250,19 +250,117 @@
     if (heroQuote) {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const heroQuotes = [
-        'Solving <em>homelessness</em><br />in Austin.',
-        'Serving <em>Austin</em><br />with heart.',
-        'Turning <em>compassion</em><br />into action.',
-        'Showing up for our <em>neighbors</em><br />every day.',
-        'Students building <em>hope</em><br />together.',
-        'Mobilizing <em>service</em><br />for lasting change.'
+        {
+          firstLine: ['Solving ', { text: 'homelessness', emphasis: true }],
+          secondLine: ['in Austin.']
+        },
+        {
+          firstLine: ['Serving ', { text: 'Austin', emphasis: true }],
+          secondLine: ['with heart.']
+        },
+        {
+          firstLine: ['Turning ', { text: 'compassion', emphasis: true }],
+          secondLine: ['into action.']
+        },
+        {
+          firstLine: ['Showing up for our ', { text: 'neighbors', emphasis: true }],
+          secondLine: ['every day.']
+        },
+        {
+          firstLine: ['Students building ', { text: 'hope', emphasis: true }],
+          secondLine: ['together.']
+        },
+        {
+          firstLine: ['Mobilizing ', { text: 'service', emphasis: true }],
+          secondLine: ['for lasting change.']
+        }
       ];
 
       let activeQuote = Math.floor(Math.random() * heroQuotes.length);
       let quoteTimer;
+      let typingTimer;
 
-      const renderQuote = (index) => {
-        heroQuote.innerHTML = heroQuotes[index];
+      const buildLine = (segments) => {
+        const line = document.createElement('span');
+        line.className = 'hero-quote-line';
+        return { line, segments };
+      };
+
+      const createCharacterNodes = (segments, lineElement) => {
+        const nodes = [];
+
+        segments.forEach((segment) => {
+          if (typeof segment === 'string') {
+            segment.split('').forEach((character) => {
+              const charNode = document.createElement('span');
+              charNode.className = 'hero-quote-char';
+              charNode.textContent = character;
+              lineElement.appendChild(charNode);
+              nodes.push(charNode);
+            });
+            return;
+          }
+
+          const emphasizedWord = document.createElement('em');
+          lineElement.appendChild(emphasizedWord);
+
+          segment.text.split('').forEach((character) => {
+            const charNode = document.createElement('span');
+            charNode.className = 'hero-quote-char';
+            charNode.textContent = character;
+            emphasizedWord.appendChild(charNode);
+            nodes.push(charNode);
+          });
+        });
+
+        return nodes;
+      };
+
+      const renderStaticQuote = (index) => {
+        const quote = heroQuotes[index];
+        heroQuote.innerHTML = '';
+
+        [quote.firstLine, quote.secondLine].forEach((segments) => {
+          const { line } = buildLine(segments);
+          segments.forEach((segment) => {
+            if (typeof segment === 'string') {
+              line.append(document.createTextNode(segment));
+            } else {
+              const emphasizedWord = document.createElement('em');
+              emphasizedWord.textContent = segment.text;
+              line.appendChild(emphasizedWord);
+            }
+          });
+          heroQuote.appendChild(line);
+        });
+      };
+
+      const renderTypewriterQuote = (index, onComplete) => {
+        const quote = heroQuotes[index];
+        heroQuote.innerHTML = '';
+        heroQuote.classList.add('is-typing');
+
+        const allCharacters = [quote.firstLine, quote.secondLine].flatMap((segments) => {
+          const { line } = buildLine(segments);
+          heroQuote.appendChild(line);
+          return createCharacterNodes(segments, line);
+        });
+
+        let characterIndex = 0;
+
+        const revealNextCharacter = () => {
+          if (characterIndex >= allCharacters.length) {
+            heroQuote.classList.remove('is-typing');
+            onComplete();
+            return;
+          }
+
+          allCharacters[characterIndex].classList.add('is-visible');
+          characterIndex += 1;
+          typingTimer = window.setTimeout(revealNextCharacter, 42);
+        };
+
+        revealNextCharacter();
       };
 
       const getNextQuoteIndex = () => {
@@ -282,37 +380,28 @@
 
       const rotateQuote = () => {
         const nextQuote = getNextQuoteIndex();
+        activeQuote = nextQuote;
 
         if (prefersReducedMotion) {
-          activeQuote = nextQuote;
-          renderQuote(activeQuote);
+          renderStaticQuote(activeQuote);
           queueNextQuote();
           return;
         }
 
-        heroQuote.classList.add('is-leaving');
-
-        window.setTimeout(() => {
-          activeQuote = nextQuote;
-          renderQuote(activeQuote);
-          heroQuote.classList.remove('is-leaving');
-          heroQuote.classList.add('is-entering');
-
-          window.requestAnimationFrame(() => {
-            window.requestAnimationFrame(() => {
-              heroQuote.classList.remove('is-entering');
-            });
-          });
-
-          queueNextQuote();
-        }, 425);
+        window.clearTimeout(typingTimer);
+        renderTypewriterQuote(activeQuote, queueNextQuote);
       };
 
-      renderQuote(activeQuote);
-      queueNextQuote();
+      if (prefersReducedMotion) {
+        renderStaticQuote(activeQuote);
+        queueNextQuote();
+      } else {
+        renderTypewriterQuote(activeQuote, queueNextQuote);
+      }
 
       window.addEventListener('beforeunload', () => {
         window.clearTimeout(quoteTimer);
+        window.clearTimeout(typingTimer);
       });
     }
   </script>
