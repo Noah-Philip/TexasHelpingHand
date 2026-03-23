@@ -71,6 +71,24 @@ img { max-width: 100%; display: block; }
 .compact-topnav:hover,
 .compact-topnav:focus-within,
 .compact-topnav.menu-open { height: auto; }
+.compact-topnav .nav-bar { position: relative; }
+.compact-topnav .nav-links {
+  display: flex;
+  grid-column: 2 / 4;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.compact-topnav .nav-pills {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.compact-topnav .nav-cta {
+  grid-column: auto;
+  justify-self: auto;
+  margin-left: auto;
+}
 .compact-topnav .nav-sep,
 .compact-topnav .nav-drawer { display: none; }
 
