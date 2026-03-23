@@ -98,7 +98,9 @@
   <main id="main-content">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-eyebrow">UT Student Organization · Austin, TX</div>
-      <h1 id="hero-title" class="hero-title">Solving <em>homelessness</em><br />in Austin.</h1>
+      <h1 id="hero-title" class="hero-title">
+        <span class="hero-quote" data-hero-quote aria-live="polite">Solving <em>homelessness</em><br />in Austin.</span>
+      </h1>
       <p class="hero-sub">Showing up, serving with purpose, and uplifting communities through volunteering, consulting, advocacy, and direct nonprofit support.</p>
       <a href="#join" class="hero-cta">Join Us →</a>
       <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll to explore</div>
@@ -235,12 +237,82 @@
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('[data-nav]');
     const topnav = document.querySelector('.topnav');
+    const heroQuote = document.querySelector('[data-hero-quote]');
 
     if (hamburger && navLinks) {
       hamburger.addEventListener('click', () => {
         const isOpen = navLinks.classList.toggle('open');
         topnav.classList.toggle('menu-open', isOpen);
         hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    if (heroQuote) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const heroQuotes = [
+        'Solving <em>homelessness</em><br />in Austin.',
+        'Serving <em>Austin</em><br />with heart.',
+        'Turning <em>compassion</em><br />into action.',
+        'Showing up for our <em>neighbors</em><br />every day.',
+        'Students building <em>hope</em><br />together.',
+        'Mobilizing <em>service</em><br />for lasting change.'
+      ];
+
+      let activeQuote = Math.floor(Math.random() * heroQuotes.length);
+      let quoteTimer;
+
+      const renderQuote = (index) => {
+        heroQuote.innerHTML = heroQuotes[index];
+      };
+
+      const getNextQuoteIndex = () => {
+        if (heroQuotes.length < 2) return activeQuote;
+
+        let nextQuote = activeQuote;
+        while (nextQuote === activeQuote) {
+          nextQuote = Math.floor(Math.random() * heroQuotes.length);
+        }
+        return nextQuote;
+      };
+
+      const queueNextQuote = () => {
+        const delay = 10000 + Math.floor(Math.random() * 5001);
+        quoteTimer = window.setTimeout(rotateQuote, delay);
+      };
+
+      const rotateQuote = () => {
+        const nextQuote = getNextQuoteIndex();
+
+        if (prefersReducedMotion) {
+          activeQuote = nextQuote;
+          renderQuote(activeQuote);
+          queueNextQuote();
+          return;
+        }
+
+        heroQuote.classList.add('is-leaving');
+
+        window.setTimeout(() => {
+          activeQuote = nextQuote;
+          renderQuote(activeQuote);
+          heroQuote.classList.remove('is-leaving');
+          heroQuote.classList.add('is-entering');
+
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+              heroQuote.classList.remove('is-entering');
+            });
+          });
+
+          queueNextQuote();
+        }, 425);
+      };
+
+      renderQuote(activeQuote);
+      queueNextQuote();
+
+      window.addEventListener('beforeunload', () => {
+        window.clearTimeout(quoteTimer);
       });
     }
   </script>
