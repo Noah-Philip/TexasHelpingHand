@@ -492,6 +492,34 @@ img { max-width: 100%; display: block; }
   color: var(--green-light);
 }
 
+.interior-involved {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(232, 227, 214, 0.72) 100%);
+}
+.interior-involved .section-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.interior-involved .centered-intro {
+  max-width: 720px;
+}
+.involved-overview {
+  margin-top: 30px;
+  text-align: center;
+}
+.involved-overview-link {
+  color: var(--green-light);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(58, 112, 80, 0.3);
+  text-underline-offset: 0.22em;
+}
+.involved-overview-link:hover,
+.involved-overview-link:focus-visible {
+  color: var(--green-dark);
+  text-decoration-color: currentColor;
+}
+
 .calendar-section { background: #ebe6d9; }
 .editorial-shell {
   display: grid;
