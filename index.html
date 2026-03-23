@@ -3,127 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Texas Helping Hand | UT Student Support for Nonprofits</title>
+  <title>Texas Helping Hand | Solving Homelessness in Austin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header>
-    <nav class="navbar" aria-label="Primary">
-      <a class="logo" href="index.html" aria-label="Texas Helping Hand home">
-        <span class="logo-mark" aria-hidden="true">TH</span>
-        Texas Helping Hand
-      </a>
-      <div class="nav-actions">
+  <header class="site-header">
+    <nav class="topnav" aria-label="Primary">
+      <div class="nav-bar">
+        <a class="nav-brand" href="index.html" aria-label="Texas Helping Hand home">
+          <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="13" stroke="rgba(200,230,160,0.5)" stroke-width="1.5"></circle>
+            <path d="M18 9C18 7 15 5 13 7L7 12C5 14 5 17 7 19L12 24C14 26 17 26 19 24L24 19C26 17 26 14 24 12Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M11 15L13 17M13.5 12.5L15.5 14.5" stroke="white" stroke-width="1.3" stroke-linecap="round"></path>
+          </svg>
+          <span class="nav-brand-name">Texas Helping Hand</span>
+        </a>
+
         <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
           Menu
         </button>
+
         <div class="nav-links" data-nav>
-          <a href="about.html">About Us</a>
-          <a href="nonprofits.html">Partners</a>
-          <a href="contact.html">Contact</a>
-          <a class="nav-donate" href="#donate">Donate</a>
+          <div class="nav-pills">
+            <a class="nav-pill active" href="index.html">Home</a>
+            <a class="nav-pill" href="about.html">About</a>
+            <a class="nav-pill" href="#volunteer">Volunteer</a>
+            <a class="nav-pill" href="#consult">Consult</a>
+            <a class="nav-pill" href="#advocate">Advocate</a>
+            <a class="nav-pill" href="#calendar">Events</a>
+            <a class="nav-pill" href="contact.html">Contact</a>
+          </div>
+          <a class="nav-cta" href="#join">Join Us →</a>
+        </div>
+      </div>
+
+      <div class="nav-sep"></div>
+
+      <div class="nav-drawer" aria-label="Expanded navigation">
+        <div class="drawer-col">
+          <div class="drawer-col-label">Get Involved</div>
+          <a class="drawer-link" href="#volunteer">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg></div>
+            <div class="drawer-text"><strong>Volunteer</strong><span>Weekly hands-on outreach</span></div>
+          </a>
+          <a class="drawer-link" href="#consult">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></div>
+            <div class="drawer-text"><strong>Consult</strong><span>Partner with nonprofits</span></div>
+          </a>
+          <a class="drawer-link" href="#advocate">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"></path><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg></div>
+            <div class="drawer-text"><strong>Advocate</strong><span>Drive policy change</span></div>
+          </a>
+        </div>
+
+        <div class="drawer-col">
+          <div class="drawer-col-label">About Us</div>
+          <a class="drawer-link" href="about.html">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg></div>
+            <div class="drawer-text"><strong>Our Story</strong><span>How it all started</span></div>
+          </a>
+          <a class="drawer-link" href="#calendar">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+            <div class="drawer-text"><strong>Events</strong><span>Upcoming outreach</span></div>
+          </a>
+          <a class="drawer-link" href="nonprofits.html">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
+            <div class="drawer-text"><strong>Our Partners</strong><span>Meet our nonprofits</span></div>
+          </a>
+        </div>
+
+        <div class="drawer-col">
+          <div class="drawer-col-label">Connect</div>
+          <a class="drawer-link" href="contact.html">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></div>
+            <div class="drawer-text"><strong>Contact Us</strong><span>uthelpinghand@gmail.com</span></div>
+          </a>
+          <a class="drawer-link" href="https://www.instagram.com/texashelpinghand" target="_blank" rel="noreferrer">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle></svg></div>
+            <div class="drawer-text"><strong>Instagram</strong><span>@texashelpinghand</span></div>
+          </a>
+          <a class="drawer-link" href="https://www.linkedin.com/company/texashelpinghand/posts/?feedView=all" target="_blank" rel="noreferrer">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24" fill="rgba(200,230,160,0.7)" stroke="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg></div>
+            <div class="drawer-text"><strong>LinkedIn</strong><span>Texas Helping Hand</span></div>
+          </a>
         </div>
       </div>
     </nav>
   </header>
 
   <main id="main-content">
-    <section class="hero-editorial" aria-labelledby="hero-title">
-      <div class="hero-wash"></div>
-      <div class="hero-content">
-        <p class="hero-eyebrow">Austin community care, powered by UT students</p>
-        <h1 id="hero-title">Where student energy meets frontline nonprofit work.</h1>
-        <p>
-          Texas Helping Hand connects compassionate students with local organizations tackling housing,
-          food insecurity, and crisis support—building practical impact for neighbors across Austin.
-        </p>
-        <div class="cta-group" aria-label="Hero actions">
-          <a class="cta-button" href="contact.html">Join the Volunteer Team</a>
-          <a class="cta-button secondary" href="#donate">Fund Immediate Needs</a>
-        </div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-eyebrow">UT Student Organization · Austin, TX</div>
+      <h1 id="hero-title" class="hero-title">Solving <em>homelessness</em><br />in Austin.</h1>
+      <p class="hero-sub">Showing up, serving with purpose, and uplifting communities through volunteering, consulting, advocacy, and direct nonprofit support.</p>
+      <a href="#join" class="hero-cta">Join Us →</a>
+      <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll to explore</div>
+    </section>
+
+    <section class="section about" aria-labelledby="about-title">
+      <div class="about-text">
+        <div class="section-eyebrow">Who We Are</div>
+        <h2 id="about-title" class="section-title">More than a student org.</h2>
+        <div class="section-divider"></div>
+        <p>Texas Helping Hand is a UT student organization dedicated to tackling homelessness in Austin through direct action, strategic consulting, and meaningful advocacy.</p>
+        <p>We believe every student has the power to create real, lasting change in their community. Whether you're passionate about service, strategy, or policy, there is a place for you here.</p>
       </div>
-      <div class="hero-pullquote" aria-label="Impact pull quote">
-        <p>"Every service shift is a bridge between campus resources and real families who need support now."</p>
-        <span>— Texas Helping Hand team</span>
-      </div>
-      <div class="hero-impact-ribbon" aria-label="Impact indicators">
-        <span><strong>9+</strong> nonprofit partners</span>
-        <span><strong>Year-round</strong> student-led projects</span>
-        <span><strong>Austin-first</strong> direct service focus</span>
+      <div class="about-stats">
+        <div class="stat-card"><div class="stat-num">12+</div><div class="stat-label">Partner nonprofits in Austin</div></div>
+        <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">Active student members</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Ways to get involved</div></div>
+        <div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">Volunteer hours per semester</div></div>
       </div>
     </section>
 
-    <section class="mission-split" aria-labelledby="mission-title">
-      <div class="mission-statement">
-        <p class="section-label">Our mission</p>
-        <h2 id="mission-title">Build durable partnerships that turn volunteer hours into measurable local change.</h2>
-        <p>
-          We mobilize UT students for hands-on nonprofit support: outreach, operations, fundraising, and resource delivery.
-          The result is not one-off service—it is dependable collaboration that helps community organizations scale their work.
-        </p>
-      </div>
-      <div class="mission-image-stack" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1000&q=80" alt="">
-        <img src="https://images.unsplash.com/photo-1469571486292-b53601020f74?auto=format&fit=crop&w=900&q=80" alt="">
+    <section class="section pillars-section" aria-labelledby="pillars-title">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 id="pillars-title" class="section-title">Three ways we fight homelessness.</h2>
+      <div class="section-divider"></div>
+      <div class="pillars-grid">
+        <article class="pillar-card" id="volunteer">
+          <div class="pillar-num">01</div>
+          <div class="pillar-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg></div>
+          <h3>Volunteer</h3>
+          <p>Hands-on service supporting communities in need across Austin. We show up every week and work alongside our nonprofit partners.</p>
+          <ul class="pillar-bullets"><li>Weekly outreach events</li><li>Food and supply drives</li><li>Care package assembly</li><li>Shelter support shifts</li><li>Community conferences</li></ul>
+          <span class="pillar-tag">Take Action</span>
+        </article>
+        <article class="pillar-card" id="consult">
+          <div class="pillar-num">02</div>
+          <div class="pillar-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></div>
+          <h3>Consult</h3>
+          <p>We partner with local nonprofits to build data-driven solutions that create measurable community impact long after a single event ends.</p>
+          <ul class="pillar-bullets"><li>Data analysis projects</li><li>Website revamps and SEO</li><li>Legislator analysis</li><li>Policy presentations</li><li>Social media strategy</li></ul>
+          <span class="pillar-tag">Make Impact</span>
+        </article>
+        <article class="pillar-card" id="advocate">
+          <div class="pillar-num">03</div>
+          <div class="pillar-icon-wrap"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"></path><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg></div>
+          <h3>Advocate</h3>
+          <p>We amplify voices and push for policy change through research, awareness campaigns, and direct engagement with community leaders.</p>
+          <ul class="pillar-bullets"><li>Legislator outreach</li><li>Speaker events</li><li>Awareness campaigns</li><li>Research briefs</li><li>Social media projects</li></ul>
+          <span class="pillar-tag">Drive Change</span>
+        </article>
       </div>
     </section>
 
-    <section class="impact-band" aria-label="Impact highlights">
-      <p>From supply drives to shelter outreach, our teams support nonprofits where responsiveness matters most.</p>
+    <section class="section involved" id="join" aria-labelledby="join-title">
+      <div class="section-eyebrow">Join Us</div>
+      <h2 id="join-title" class="section-title">Ready to make a difference?</h2>
+      <div class="section-divider"></div>
+      <p class="section-intro centered-intro">No experience needed. Just a passion for your community and a willingness to show up.</p>
+      <div class="involved-cards">
+        <a class="inv-card" href="#calendar">
+          <h4>Attend a Meeting</h4>
+          <p>Come see what we're about. General meetings are open to all UT students and connected to our live events calendar below.</p>
+          <span class="inv-card-tag">→ Learn More</span>
+        </a>
+        <a class="inv-card" href="contact.html">
+          <h4>Join a Project</h4>
+          <p>Apply to join a consulting or advocacy project. We match students with initiatives based on their skills and interests.</p>
+          <span class="inv-card-tag">→ Apply Now</span>
+        </a>
+        <a class="inv-card" href="#calendar">
+          <h4>Volunteer This Week</h4>
+          <p>No application needed. Check our events calendar and show up for the next outreach shift with our team.</p>
+          <span class="inv-card-tag">→ See Events</span>
+        </a>
+      </div>
     </section>
 
-    <section class="help-editorial" id="help" aria-labelledby="help-title">
-      <h2 id="help-title">How to Help</h2>
-      <p class="help-intro">Choose your role in the story: serve on-site, fuel the work financially, or build a formal nonprofit partnership with our student teams.</p>
-
-      <article class="help-panel volunteer-panel">
+    <section class="section calendar-section" id="calendar" aria-labelledby="calendar-title">
+      <div class="section-shell editorial-shell">
         <div>
-          <p class="help-kicker">Volunteer</p>
-          <h3>Show up for direct service with nonprofits across Austin.</h3>
-          <p>Join weekend projects, outreach events, and recurring initiatives that place students alongside experienced nonprofit staff.</p>
+          <div class="section-eyebrow">Events</div>
+          <h2 id="calendar-title" class="section-title">Stay synced with upcoming outreach.</h2>
+          <div class="section-divider"></div>
+          <p class="section-intro">Track volunteer shifts, orientation sessions, and community outreach events in our live Google Calendar.</p>
         </div>
-        <a class="panel-link" href="contact.html">Step into service</a>
-      </article>
-
-      <article class="help-panel donate-panel">
-        <div>
-          <p class="help-kicker">Donate</p>
-          <h3>Fund transportation, emergency supplies, and rapid-response resource requests.</h3>
-          <p>Your donation keeps our student teams equipped and allows partners to act quickly when needs escalate.</p>
-        </div>
-        <a class="panel-link" href="#donate">Give to the campaign</a>
-      </article>
-
-      <article class="help-panel partner-panel">
-        <div>
-          <p class="help-kicker">Partner</p>
-          <h3>Co-design projects with student leaders who are ready to contribute.</h3>
-          <p>Nonprofits can collaborate with us on outreach strategy, operational support, and volunteer staffing models.</p>
-        </div>
-        <a class="panel-link" href="contact.html">Start a partnership</a>
-      </article>
-    </section>
-
-    <section class="partner-wall" aria-labelledby="partner-title">
-      <div class="partner-wall-header">
-        <p class="section-label">Trusted by local organizations</p>
-        <h2 id="partner-title">A growing coalition of nonprofits, shelters, and community programs.</h2>
-      </div>
-      <div class="logo-river" aria-label="Partner names">
-        <span>Casa Marianella</span>
-        <span>Austin Mutual Aid</span>
-        <span>Central Texas Food Bank</span>
-        <span>The Other Ones Foundation</span>
-        <span>Caritas of Austin</span>
-        <span>SAFE Alliance</span>
-      </div>
-    </section>
-
-    <section class="calendar" aria-labelledby="calendar-title">
-      <div class="section-shell">
-        <h2 id="calendar-title">Upcoming Events Calendar</h2>
-        <p>Track volunteer shifts, orientation sessions, and community outreach events.</p>
         <iframe
           title="Texas Helping Hand Calendar"
           src="https://calendar.google.com/calendar/embed?src=uthelpinghand%40gmail.com&ctz=America%2FChicago"
@@ -133,15 +193,13 @@
       </div>
     </section>
 
-    <section class="donate-feature" id="donate" aria-labelledby="donate-title">
+    <section class="section donate-section" id="donate" aria-labelledby="donate-title">
       <div class="donate-story">
-        <p class="section-label">Featured campaign</p>
-        <h2 id="donate-title">Keep student-led service teams in the field all semester.</h2>
-        <p>
-          Donations are routed toward immediate nonprofit requests—from hygiene kits and food support to transportation
-          and event logistics. This is flexible funding that helps partners respond in real time.
-        </p>
-        <ul>
+        <div class="section-eyebrow">Featured Campaign</div>
+        <h2 id="donate-title" class="section-title">Keep student-led service teams in the field all semester.</h2>
+        <div class="section-divider"></div>
+        <p>Donations are routed toward immediate nonprofit requests, from hygiene kits and food support to transportation and event logistics. This is flexible funding that helps partners respond in real time.</p>
+        <ul class="donate-list">
           <li>Emergency supply purchases</li>
           <li>Transportation for service days</li>
           <li>Resource drives and outreach materials</li>
@@ -151,45 +209,40 @@
         <article class="donate-method primary-method">
           <p class="badge">Preferred</p>
           <h3>Square</h3>
-          <img src="https://quickchart.io/qr?text=Square%20Donation%20Texas%20Helping%20Hand&size=220" alt="Square donation QR code for Texas Helping Hand">
+          <img src="https://quickchart.io/qr?text=Square%20Donation%20Texas%20Helping%20Hand&size=220" alt="Square donation QR code for Texas Helping Hand" />
           <a class="donate-link" href="https://square.link/u/texashelpinghand" target="_blank" rel="noreferrer">Donate with Square</a>
         </article>
         <article class="donate-method">
           <h3>Zelle</h3>
-          <img src="https://quickchart.io/qr?text=Zelle%20to%20uthelpinghand%40gmail.com&size=220" alt="Zelle donation QR code for Texas Helping Hand">
+          <img src="https://quickchart.io/qr?text=Zelle%20to%20uthelpinghand%40gmail.com&size=220" alt="Zelle donation QR code for Texas Helping Hand" />
           <p>Send through your banking app to <strong>uthelpinghand@gmail.com</strong>.</p>
         </article>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <strong>Texas Helping Hand</strong>
-        <p>We are a registered UT student organization and are not affiliated with The University of Texas at Austin.</p>
-      </div>
-      <div class="footer-links" aria-label="Footer links">
-        <a href="contact.html">Contact</a>
-        <a href="https://www.instagram.com/texashelpinghand" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.linkedin.com/company/texashelpinghand/posts/?feedView=all" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
+  <footer class="footer">
+    <div class="footer-brand">Texas Helping Hand<small>UT Student Organization</small></div>
+    <div class="footer-links">
+      <a href="mailto:uthelpinghand@gmail.com">uthelpinghand@gmail.com</a>
+      <a href="https://www.instagram.com/texashelpinghand" target="_blank" rel="noreferrer">@texashelpinghand</a>
+      <a href="https://www.linkedin.com/company/texashelpinghand/posts/?feedView=all" target="_blank" rel="noreferrer">LinkedIn</a>
     </div>
+    <div class="footer-copy">© 2026 Texas Helping Hand</div>
   </footer>
 
   <script>
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('[data-nav]');
-    const header = document.querySelector('header');
+    const topnav = document.querySelector('.topnav');
 
-    hamburger.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen);
-    });
-
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 12);
-    });
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        topnav.classList.toggle('menu-open', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
   </script>
 </body>
 </html>
