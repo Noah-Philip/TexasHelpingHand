@@ -208,9 +208,11 @@ img { max-width: 100%; display: block; }
   color: rgba(255, 255, 255, 0.36);
 }
 
+/* Put the provided group photo at /hero-image.jpg to override the fallback hero image. */
 .hero {
   background:
-    linear-gradient(rgba(26, 53, 39, 0.67), rgba(26, 53, 39, 0.67)),
+    linear-gradient(rgba(18, 32, 24, 0.58), rgba(18, 32, 24, 0.58)),
+    url('hero-image.jpg') center 42% / cover no-repeat,
     url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1800&q=80') center 35% / cover no-repeat;
   min-height: 100vh;
   display: flex;
