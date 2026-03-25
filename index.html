@@ -298,18 +298,28 @@
 
       const appendCharacterRun = (lineElement, characters, options = {}) => {
         const { visible = true, legacy = false } = options;
-        let activeContainer = lineElement;
         let activeEmphasis = false;
+        let emphasisContainer = lineElement;
+        let activeWordContainer = null;
 
         characters.forEach(({ character, emphasis }) => {
           if (emphasis !== activeEmphasis) {
             if (emphasis) {
-              activeContainer = document.createElement('em');
-              lineElement.appendChild(activeContainer);
+              emphasisContainer = document.createElement('em');
+              lineElement.appendChild(emphasisContainer);
             } else {
-              activeContainer = lineElement;
+              emphasisContainer = lineElement;
             }
             activeEmphasis = emphasis;
+            activeWordContainer = null;
+          }
+
+          if (character === ' ') {
+            activeWordContainer = null;
+          } else if (!activeWordContainer) {
+            activeWordContainer = document.createElement('span');
+            activeWordContainer.className = 'hero-quote-word';
+            emphasisContainer.appendChild(activeWordContainer);
           }
 
           const charNode = document.createElement('span');
@@ -321,7 +331,7 @@
             charNode.classList.add('is-legacy');
           }
           charNode.textContent = character;
-          activeContainer.appendChild(charNode);
+          (activeWordContainer || emphasisContainer).appendChild(charNode);
         });
       };
 
