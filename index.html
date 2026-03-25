@@ -377,30 +377,34 @@
         const deletingDelays = [42, 42];
         const typingDelays = [52, 42];
         let phase = fromIndex === null ? 'typing' : 'deleting';
-        let activeLineIndex = phase === 'deleting' ? 0 : 0;
+        let activeLineIndex = phase === 'deleting' ? previousLines.length - 1 : 0;
 
-        const advanceLineIndex = (phaseName, counts) => {
+        const getActiveLineIndex = (phaseName, counts) => {
           const targetLines = phaseName === 'deleting' ? previousLines : nextLines;
-          let index = activeLineIndex;
+          const startIndex = phaseName === 'deleting' ? targetLines.length - 1 : 0;
+          const step = phaseName === 'deleting' ? -1 : 1;
 
-          while (index < targetLines.length) {
+          for (let index = startIndex; index >= 0 && index < targetLines.length; index += step) {
             const lineLength = targetLines[index].length;
-            if (phaseName === 'deleting' ? counts[index] > 0 : counts[index] < lineLength) {
+            const isLineInProgress = phaseName === 'deleting'
+              ? counts[index] > 0
+              : counts[index] < lineLength;
+
+            if (isLineInProgress) {
               return index;
             }
-            index += 1;
           }
 
-          return index;
+          return phaseName === 'deleting' ? -1 : targetLines.length;
         };
 
         const advanceFrame = () => {
           if (phase === 'deleting') {
-            activeLineIndex = advanceLineIndex('deleting', deletingCounts);
+            activeLineIndex = getActiveLineIndex('deleting', deletingCounts);
 
-            if (activeLineIndex >= previousLines.length) {
+            if (activeLineIndex < 0) {
               phase = 'typing';
-              activeLineIndex = advanceLineIndex('typing', typingCounts);
+              activeLineIndex = getActiveLineIndex('typing', typingCounts);
               renderTransitionFrame(fromIndex, toIndex, phase, typingCounts, activeLineIndex);
               typingTimer = window.setTimeout(advanceFrame, 140);
               return;
@@ -412,7 +416,7 @@
             return;
           }
 
-          activeLineIndex = advanceLineIndex('typing', typingCounts);
+          activeLineIndex = getActiveLineIndex('typing', typingCounts);
 
           if (activeLineIndex >= nextLines.length) {
             heroQuote.classList.remove('is-typing');
