@@ -11,8 +11,8 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="site-header interior-header">
-    <nav class="topnav compact-topnav" aria-label="Primary">
+  <header class="site-header">
+    <nav class="topnav" aria-label="Primary">
       <div class="nav-bar">
         <a class="nav-brand" href="index.html" aria-label="Texas Helping Hand home">
           <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -22,25 +22,77 @@
           </svg>
           <span class="nav-brand-name">Texas Helping Hand</span>
         </a>
-        <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+
+        <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          Menu
+        </button>
+
         <div class="nav-links" data-nav>
           <div class="nav-pills">
             <a class="nav-pill" href="index.html">Home</a>
             <a class="nav-pill" href="about.html">About</a>
-            <a class="nav-pill" href="nonprofits.html">Partners</a>
+            <a class="nav-pill" href="index.html#volunteer">Volunteer</a>
+            <a class="nav-pill" href="index.html#consult">Consult</a>
+            <a class="nav-pill" href="index.html#advocate">Advocate</a>
+            <a class="nav-pill" href="index.html#calendar">Events</a>
             <a class="nav-pill active" href="contact.html">Contact</a>
           </div>
-          <a class="nav-cta" href="index.html#calendar">Volunteer Calendar →</a>
+          <a class="nav-cta" href="index.html#join">Join Us →</a>
+        </div>
+      </div>
+
+      <div class="nav-sep"></div>
+
+      <div class="nav-drawer" aria-label="Expanded navigation">
+        <div class="drawer-col">
+          <div class="drawer-col-label">Get Involved</div>
+          <a class="drawer-link" href="index.html#volunteer">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg></div>
+            <div class="drawer-text"><strong>Volunteer</strong><span>Weekly volunteer opportunities</span></div>
+          </a>
+          <a class="drawer-link" href="index.html#consult">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></div>
+            <div class="drawer-text"><strong>Consult</strong><span>Partner with nonprofits</span></div>
+          </a>
+          <a class="drawer-link" href="index.html#advocate">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"></path><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg></div>
+            <div class="drawer-text"><strong>Advocate</strong><span>Drive policy change</span></div>
+          </a>
+        </div>
+
+        <div class="drawer-col">
+          <div class="drawer-col-label">About Us</div>
+          <a class="drawer-link" href="about.html">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg></div>
+            <div class="drawer-text"><strong>Our Story</strong><span>How it all started</span></div>
+          </a>
+          <a class="drawer-link" href="index.html#calendar">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+            <div class="drawer-text"><strong>Events</strong><span>Upcoming outreach</span></div>
+          </a>
+          <a class="drawer-link" href="nonprofits.html">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
+            <div class="drawer-text"><strong>Our Partners</strong><span>Meet our nonprofits</span></div>
+          </a>
+        </div>
+
+        <div class="drawer-col">
+          <div class="drawer-col-label">Connect</div>
+          <a class="drawer-link" href="contact.html">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></div>
+            <div class="drawer-text"><strong>Contact Us</strong><span>uthelpinghand@gmail.com</span></div>
+          </a>
+          <a class="drawer-link" href="https://www.instagram.com/texashelpinghand" target="_blank" rel="noreferrer">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle></svg></div>
+            <div class="drawer-text"><strong>Instagram</strong><span>@texashelpinghand</span></div>
+          </a>
+          <a class="drawer-link" href="https://www.linkedin.com/company/texashelpinghand/posts/?feedView=all" target="_blank" rel="noreferrer">
+            <div class="drawer-icon"><svg viewBox="0 0 24 24" fill="rgba(200,230,160,0.7)" stroke="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg></div>
+            <div class="drawer-text"><strong>LinkedIn</strong><span>Texas Helping Hand</span></div>
+          </a>
         </div>
       </div>
     </nav>
-    <div class="interior-action-row" aria-label="Quick actions">
-      <a class="action-chip" href="index.html#volunteer">Volunteer</a>
-      <a class="action-chip" href="#project-application">Consult</a>
-      <a class="action-chip" href="#project-application">Advocate</a>
-      <a class="action-chip action-chip-highlight" href="index.html#calendar">Events & Calendar</a>
-      <a class="action-chip" href="mailto:uthelpinghand@gmail.com">Contact</a>
-    </div>
   </header>
 
   <main id="main-content">
