@@ -436,6 +436,17 @@
           }
 
           typingCounts[activeLineIndex] += 1;
+          const isTypingComplete = typingCounts.every(
+            (count, lineIndex) => count >= nextLines[lineIndex].length
+          );
+
+          if (isTypingComplete) {
+            heroQuote.classList.remove('is-typing');
+            renderStaticQuote(toIndex);
+            onComplete();
+            return;
+          }
+
           renderTransitionFrame(fromIndex, toIndex, phase, typingCounts, activeLineIndex);
           typingTimer = window.setTimeout(advanceFrame, typingDelays[activeLineIndex] || 48);
         };
