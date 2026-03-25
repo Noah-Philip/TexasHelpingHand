@@ -71,28 +71,15 @@ img { max-width: 100%; display: block; }
 .compact-topnav:hover,
 .compact-topnav:focus-within,
 .compact-topnav.menu-open { height: auto; }
-.compact-topnav .nav-bar {
-  grid-template-columns: auto minmax(0, 1fr) auto;
-}
 .compact-topnav .nav-links {
-  display: flex;
-  grid-column: 2 / 4;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.85rem;
-  min-width: 0;
+  display: contents;
 }
 .compact-topnav .nav-pills {
-  position: static;
-  transform: none;
-  min-width: 0;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
 }
 .compact-topnav .nav-cta {
-  grid-column: auto;
-  justify-self: auto;
-  margin-left: auto;
+  grid-column: 3;
+  justify-self: end;
 }
 .compact-topnav .nav-sep,
 .compact-topnav .nav-drawer { display: none; }
