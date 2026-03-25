@@ -71,18 +71,23 @@ img { max-width: 100%; display: block; }
 .compact-topnav:hover,
 .compact-topnav:focus-within,
 .compact-topnav.menu-open { height: auto; }
-.compact-topnav .nav-bar { position: relative; }
+.compact-topnav .nav-bar {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
 .compact-topnav .nav-links {
   display: flex;
   grid-column: 2 / 4;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 0.85rem;
   min-width: 0;
 }
 .compact-topnav .nav-pills {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  transform: none;
+  min-width: 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .compact-topnav .nav-cta {
   grid-column: auto;
