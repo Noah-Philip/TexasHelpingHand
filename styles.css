@@ -327,6 +327,10 @@ img { max-width: 100%; display: block; }
   display: block;
   min-height: 1.1em;
 }
+.hero-quote-word {
+  display: inline-block;
+  white-space: nowrap;
+}
 .hero-quote-char {
   display: inline-block;
   opacity: 0;
