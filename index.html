@@ -336,7 +336,7 @@
         });
       };
 
-      const renderTransitionFrame = (fromIndex, toIndex, step, activeLineIndex) => {
+      const renderTransitionFrame = (fromIndex, toIndex, phase, counts, activeLineIndex) => {
         const previousLines = fromIndex === null
           ? [[], []]
           : quoteCharacters[fromIndex];
@@ -348,14 +348,13 @@
         nextLines.forEach((nextLineCharacters, lineIndex) => {
           const line = buildLine();
           const previousLineCharacters = previousLines[lineIndex] || [];
-          const typedCount = Math.min(step[lineIndex], nextLineCharacters.length);
-          const removedCount = Math.min(step[lineIndex], previousLineCharacters.length);
-          const typedCharacters = nextLineCharacters.slice(0, typedCount);
-          const remainingCharacters = previousLineCharacters.slice(removedCount);
-          const isActiveLine = lineIndex === activeLineIndex;
-          const shouldShowCursor = isActiveLine && step[lineIndex] < Math.max(previousLineCharacters.length, nextLineCharacters.length);
+          const isDeleting = phase === 'deleting';
+          const visibleCharacters = isDeleting
+            ? previousLineCharacters.slice(0, counts[lineIndex])
+            : nextLineCharacters.slice(0, counts[lineIndex]);
+          const shouldShowCursor = lineIndex === activeLineIndex;
 
-          appendCharacterRun(line, typedCharacters);
+          appendCharacterRun(line, visibleCharacters, { visible: counts[lineIndex] > 0 });
 
           if (shouldShowCursor) {
             const cursor = document.createElement('span');
@@ -364,14 +363,6 @@
             line.appendChild(cursor);
           }
 
-          if (typedCharacters.length && remainingCharacters.length) {
-            const bridge = document.createElement('span');
-            bridge.className = 'hero-quote-bridge';
-            bridge.setAttribute('aria-hidden', 'true');
-            line.appendChild(bridge);
-          }
-
-          appendCharacterRun(line, remainingCharacters, { legacy: true });
           heroQuote.appendChild(line);
         });
       };
@@ -381,28 +372,61 @@
           ? [[], []]
           : quoteCharacters[fromIndex];
         const nextLines = quoteCharacters[toIndex];
-        const lineSteps = nextLines.map((lineCharacters, lineIndex) => Math.max(lineCharacters.length, (previousLines[lineIndex] || []).length));
-        const step = [0, 0];
-        let activeLineIndex = 0;
+        const deletingCounts = previousLines.map((lineCharacters) => lineCharacters.length);
+        const typingCounts = nextLines.map(() => 0);
+        const deletingDelays = [42, 42];
+        const typingDelays = [52, 42];
+        let phase = fromIndex === null ? 'typing' : 'deleting';
+        let activeLineIndex = phase === 'deleting' ? 0 : 0;
 
-        const advanceFrame = () => {
-          while (activeLineIndex < lineSteps.length && step[activeLineIndex] >= lineSteps[activeLineIndex]) {
-            activeLineIndex += 1;
+        const advanceLineIndex = (phaseName, counts) => {
+          const targetLines = phaseName === 'deleting' ? previousLines : nextLines;
+          let index = activeLineIndex;
+
+          while (index < targetLines.length) {
+            const lineLength = targetLines[index].length;
+            if (phaseName === 'deleting' ? counts[index] > 0 : counts[index] < lineLength) {
+              return index;
+            }
+            index += 1;
           }
 
-          if (activeLineIndex >= lineSteps.length) {
+          return index;
+        };
+
+        const advanceFrame = () => {
+          if (phase === 'deleting') {
+            activeLineIndex = advanceLineIndex('deleting', deletingCounts);
+
+            if (activeLineIndex >= previousLines.length) {
+              phase = 'typing';
+              activeLineIndex = advanceLineIndex('typing', typingCounts);
+              renderTransitionFrame(fromIndex, toIndex, phase, typingCounts, activeLineIndex);
+              typingTimer = window.setTimeout(advanceFrame, 140);
+              return;
+            }
+
+            deletingCounts[activeLineIndex] -= 1;
+            renderTransitionFrame(fromIndex, toIndex, phase, deletingCounts, activeLineIndex);
+            typingTimer = window.setTimeout(advanceFrame, deletingDelays[activeLineIndex] || 42);
+            return;
+          }
+
+          activeLineIndex = advanceLineIndex('typing', typingCounts);
+
+          if (activeLineIndex >= nextLines.length) {
             heroQuote.classList.remove('is-typing');
             renderStaticQuote(toIndex);
             onComplete();
             return;
           }
 
-          step[activeLineIndex] += 1;
-          renderTransitionFrame(fromIndex, toIndex, step, activeLineIndex);
-          typingTimer = window.setTimeout(advanceFrame, 48);
+          typingCounts[activeLineIndex] += 1;
+          renderTransitionFrame(fromIndex, toIndex, phase, typingCounts, activeLineIndex);
+          typingTimer = window.setTimeout(advanceFrame, typingDelays[activeLineIndex] || 48);
         };
 
-        renderTransitionFrame(fromIndex, toIndex, step, activeLineIndex);
+        renderTransitionFrame(fromIndex, toIndex, phase, phase === 'deleting' ? deletingCounts : typingCounts, activeLineIndex);
         advanceFrame();
       };
 
