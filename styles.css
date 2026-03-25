@@ -43,7 +43,7 @@ img { max-width: 100%; display: block; }
   top: var(--header-top-offset);
   left: 50%;
   transform: translateX(-50%);
-  width: min(1100px, calc(100vw - 48px));
+  width: min(1100px, calc(100% - 48px));
   z-index: 300;
 }
 .interior-header { position: sticky; top: var(--header-top-offset); }
@@ -898,7 +898,7 @@ img { max-width: 100%; display: block; }
   }
   .site-header,
   .interior-header {
-    width: calc(100vw - 24px);
+    width: calc(100% - 24px);
   }
   .topnav,
   .topnav:hover,
