@@ -119,12 +119,14 @@ img { max-width: 100%; display: block; }
 .nav-bar {
   min-height: 52px;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 1rem;
   padding: 0 18px 0 14px;
 }
 .nav-brand {
+  grid-column: 1;
+  justify-self: start;
   display: flex;
   align-items: center;
   gap: 10px;
