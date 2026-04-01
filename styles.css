@@ -710,20 +710,18 @@ img { max-width: 100%; display: block; }
 .team-cards {
   margin-top: 2rem;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: 0.55rem;
-  scroll-snap-type: x proximity;
+  overflow: visible;
+  padding-bottom: 0;
 }
 .team-member-card {
   background: transparent;
   display: grid;
   gap: 0.4rem;
-  flex: 0 0 180px;
-  min-width: 180px;
-  scroll-snap-align: start;
+  flex: 0 1 180px;
+  min-width: 160px;
 }
 .team-member-card img {
   width: 100%;
@@ -739,6 +737,7 @@ img { max-width: 100%; display: block; }
   border-radius: 12px;
   padding: 0.75rem 0.8rem;
   box-shadow: 0 12px 22px rgba(10, 45, 33, 0.2);
+  text-align: center;
 }
 .team-member-caption h3,
 .team-member-caption h4 {
