@@ -709,6 +709,39 @@ img { max-width: 100%; display: block; }
 }
 .team-page-main .team-directory {
   padding-top: calc(var(--header-height) + var(--header-top-offset) + 80px);
+  position: relative;
+  overflow: hidden;
+}
+.team-page-main .team-directory::before,
+.team-page-main .team-directory::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.team-page-main .team-directory::before {
+  top: -120px;
+  right: -140px;
+  width: min(42vw, 520px);
+  height: min(42vw, 520px);
+  background:
+    radial-gradient(circle at 32% 35%, rgba(36, 88, 64, 0.2), transparent 64%),
+    radial-gradient(circle at 72% 70%, rgba(163, 121, 73, 0.12), transparent 62%);
+}
+.team-page-main .team-directory::after {
+  left: -110px;
+  bottom: 24px;
+  width: min(40vw, 420px);
+  height: min(32vw, 300px);
+  background:
+    linear-gradient(130deg, rgba(126, 76, 49, 0.12), rgba(41, 94, 76, 0.16));
+  clip-path: polygon(0 18%, 88% 0, 100% 72%, 8% 100%);
+  opacity: 0.7;
+}
+.team-directory .section-shell,
+.branch-section .section-shell {
+  position: relative;
+  z-index: 1;
 }
 .team-cards {
   margin-top: 2rem;
@@ -720,13 +753,14 @@ img { max-width: 100%; display: block; }
   padding-bottom: 0;
 }
 .team-member-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
   display: grid;
   gap: 0.4rem;
   flex: 0 1 180px;
   min-width: 160px;
-  padding: 0.45rem;
-  border-radius: 16px;
+  padding: 0.5rem;
+  border: 1px solid rgba(34, 68, 53, 0.12);
+  border-radius: 8px;
   transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
   animation: team-card-rise 0.55s ease both;
 }
@@ -738,7 +772,7 @@ img { max-width: 100%; display: block; }
 .team-member-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 18px 30px rgba(18, 52, 39, 0.18);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.08));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.11));
 }
 .team-member-card:hover img {
   transform: scale(1.03);
@@ -756,19 +790,25 @@ img { max-width: 100%; display: block; }
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 6px;
   border: 1px solid rgba(45, 90, 61, 0.2);
   box-shadow: 0 14px 30px rgba(16, 36, 31, 0.14);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 .team-member-caption {
-  background: linear-gradient(135deg, rgba(10, 68, 48, 0.98), rgba(24, 96, 70, 0.95));
+  background: linear-gradient(135deg, rgba(9, 58, 44, 0.98), rgba(21, 83, 62, 0.95));
   color: var(--white);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 0.75rem 0.8rem;
   box-shadow: 0 12px 22px rgba(10, 45, 33, 0.2);
   text-align: center;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.team-directory .team-member-card:nth-child(3n + 2) .team-member-caption {
+  background: linear-gradient(135deg, rgba(12, 64, 74, 0.97), rgba(35, 84, 95, 0.94));
+}
+.team-directory .team-member-card:nth-child(3n) .team-member-caption {
+  background: linear-gradient(135deg, rgba(66, 57, 39, 0.97), rgba(98, 83, 55, 0.93));
 }
 .team-member-caption h3,
 .team-member-caption h4 {
@@ -789,7 +829,25 @@ img { max-width: 100%; display: block; }
   font-size: 0.83rem;
   color: rgba(241, 249, 238, 0.88);
 }
-.branch-section { background: #e8e3d6; }
+.branch-section {
+  position: relative;
+  background:
+    linear-gradient(180deg, #e7e1d5 0%, #dfd7c8 100%);
+  overflow: hidden;
+}
+.branch-section::before {
+  content: '';
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(920px, 90vw);
+  height: 190px;
+  background: linear-gradient(90deg, rgba(28, 78, 56, 0.1), rgba(148, 110, 69, 0.12), rgba(50, 87, 102, 0.1));
+  clip-path: polygon(4% 36%, 100% 0, 94% 100%, 0 86%);
+  opacity: 0.56;
+  pointer-events: none;
+}
 .team-group + .team-group {
   margin-top: 2.7rem;
 }
@@ -800,10 +858,22 @@ img { max-width: 100%; display: block; }
 }
 .team-group {
   border: 1px solid rgba(32, 64, 46, 0.08);
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 1.2rem;
-  background: rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.team-group:nth-of-type(1) {
+  border-color: rgba(43, 92, 65, 0.2);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.52), rgba(228, 240, 229, 0.46));
+}
+.team-group:nth-of-type(2) {
+  border-color: rgba(65, 88, 111, 0.2);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.52), rgba(225, 233, 239, 0.46));
+}
+.team-group:nth-of-type(3) {
+  border-color: rgba(126, 89, 60, 0.24);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.52), rgba(236, 227, 216, 0.5));
 }
 .team-group:hover {
   transform: translateY(-4px);
